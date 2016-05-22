@@ -1,0 +1,19 @@
+Dine With Me
+
+Model Structure
+
+User
+has_many :spaces
+
+Table
+belongs_to :user
+has_many :meals
+
+Meal
+belongs_to :table
+belongs_to :user
+
+Booking
+chef hosts a meal with seats
+diner requests a booking for a seat
+chef accepts / declines booking

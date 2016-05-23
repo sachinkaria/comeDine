@@ -7,10 +7,10 @@ describe TablesController, "testing tables" do
   end
 
   it "displays existing tables", type: :request do
-    get "/"
+    get "/tables"
     json = JSON.parse(response.body)
-    expect(json[0]["name"]).to eq("First Table")
-    expect(json[1]["name"]).to eq("Second Table")
+    expect(json[1]["name"]).to eq("First Table")
+    expect(json[2]["name"]).to eq("Second Table")
   end
 
   it "allows user to create a table", type: :request do

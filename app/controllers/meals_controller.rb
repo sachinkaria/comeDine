@@ -3,7 +3,7 @@ class MealsController < ApplicationController
   respond_to :json
 
   def index
-    render json: Meal.all
+  render json: Meal.all
   end
 
   def create
@@ -26,6 +26,6 @@ class MealsController < ApplicationController
                   :date,
                   :time,
                   :places,
-                  :cuisine_id)
+                  :cuisine)
   end
 end

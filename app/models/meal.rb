@@ -6,6 +6,6 @@ class Meal < ActiveRecord::Base
                   :date,
                   :time,
                   :places,
-                  :cuisine_id])
+                  :cuisine])
     end
 end

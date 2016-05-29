@@ -7,7 +7,7 @@ respond_to :json
   end
 
   def create
-    render json: Table.create(table_params)
+    render json: current_user.tables.create(table_params)
   end
 
   def show

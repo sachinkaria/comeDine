@@ -7,6 +7,7 @@ end
 describe UsersController, 'testing users' do
 
   let(:json) { JSON.parse(response.body) }
+  let(:auth_error) {{"errors"=>["Authorized users only."]}}
 
   before(:each) do
     @sachin = create :user_with_table
@@ -16,8 +17,12 @@ describe UsersController, 'testing users' do
 
   it 'displays existing tables', type: :request do
     get "/users/#{@sachin.id}", {}, @auth_headers
-    puts json
     expect(json[0]['house_number']).to eq(@table.house_number)
   end
 
+
+  it 'does not show tables if user not signed in', type: :request do
+    get "/users/#{@sachin.id}", {}, {}
+    expect(json).to eq(auth_error)
+  end
 end

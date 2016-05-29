@@ -15,6 +15,10 @@ describe UsersController, 'testing users' do
     @auth_headers = @sachin.create_new_auth_token
   end
 
+  it "gets a uid assigned" do
+    expect(@sachin.uid).not_to be_blank
+  end
+
   it 'displays existing tables', type: :request do
     get "/users/#{@sachin.id}", {}, @auth_headers
     expect(json[0]['house_number']).to eq(@table.house_number)

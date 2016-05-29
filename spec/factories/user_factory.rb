@@ -9,5 +9,12 @@ FactoryGirl.define do
         create(:table, user: user)
       end
     end
+
+    factory :user_with_meal do
+      after(:create) do |user|
+        create(:table_with_meal, user: user)
+      end
+    end
+
   end
 end

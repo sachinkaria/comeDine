@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   include DeviseTokenAuth::Concerns::SetUserByToken
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protect_from_forgery with: :null_session
+  protect_from_forgery with: :null_session,
+  if: Proc.new { |c| c.request.format =~ %r{application/json} }
   respond_to :json
 
 

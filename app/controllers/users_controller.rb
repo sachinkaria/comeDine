@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user!
+  before_filter :authenticate_user!
   respond_to :json
 
   def show
-    render json: current_user.tables
+    @tables = current_user.tables
+    @meals = Meal.where(table_id: @tables[0].id)
+
+    render json: [@tables, @meals]
   end
+
 end

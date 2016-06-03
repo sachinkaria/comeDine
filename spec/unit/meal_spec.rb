@@ -4,6 +4,7 @@ describe MealsController, "testing meals" do
 
   let(:json) { JSON.parse(response.body) }
   let(:new_meal_params) { attributes_for(:meal, menu: "Pizza") }
+  let(:auth_error) {{"errors"=>["Authorized users only."]}}
 
   before(:each) do
     @sachin = create :user_with_meal
@@ -26,9 +27,4 @@ describe MealsController, "testing meals" do
     post "/tables/#{@table.id}/meals.json", new_meal_params, @auth_headers
     expect(Meal.last.menu).to eq(new_meal_params[:menu])
   end
-
-  it 'displays existing delivery requests', type: :request do
-  get '/', {}, {}
-  expect(json).to eq(auth_error)
-end
 end

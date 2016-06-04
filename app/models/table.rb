@@ -3,7 +3,8 @@ class Table < ActiveRecord::Base
   belongs_to :user
 
     def as_json(options={})
-      super(only:  [:name,
+      super(only:  [:id,
+                    :name,
                     :spaces,
                     :house_number,
                     :street,

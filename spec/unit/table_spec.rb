@@ -5,12 +5,12 @@ describe TablesController, "testing tables" do
   let(:json) { JSON.parse(response.body) }
 
   before(:each) do
-    @sachin = create :user_with_table
+    @sachin = create :user_with_meal
     @table = @sachin.tables[0]
     @auth_headers = @sachin.create_new_auth_token
   end
 
-  it "displays existing tables", type: :request do
+  it "displays tables with existing meals", type: :request do
     get "/tables", {}, @auth_headers
     expect(json[0]["name"]).to eq("Sachins Restaurant")
   end

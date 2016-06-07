@@ -3,7 +3,8 @@ class TablesController < ApplicationController
 respond_to :json
 
   def index
-    render json: Table.all
+    @tables = Table.all
+    render json: @tables
   end
 
   def create

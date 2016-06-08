@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :tables
+  has_many :bookings
 
     # before_save -> do
     #   self.uid = SecureRandom.uuid

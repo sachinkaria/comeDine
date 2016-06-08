@@ -22,13 +22,13 @@ describe UsersController, 'testing users' do
 
   it 'displays existing tables for user', type: :request do
     get "/users/#{@sachin.id}", {}, @auth_headers
-    expect(json[0]["house_number"]).to eq(@table.house_number)
+    expect(json[0]['house_number']).to eq(@table.house_number)
   end
 
   it 'displays existing meals for user', type: :request do
     get "/users/#{@sachin.id}", {}, @auth_headers
-    puts json[1]["cuisine"]
-    expect(json[1]['cuisine']).to eq("@meal.cuisine")
+    # puts "#{json[1]["cuisine"]}"
+    expect(json[1]["cuisine"]).to eq(@meal.cuisine)
   end
 
 

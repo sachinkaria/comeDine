@@ -7,6 +7,9 @@ class BookingsController < ApplicationController
   end
 
   def create
+    meal = Meal.find(params[:meal_id])
+    # meal.places -= booking_params[:spaces].to_i
+    # meal.save
     render json: current_user.bookings.create(booking_params)
   end
 

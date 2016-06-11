@@ -36,7 +36,18 @@ module ComeDineAPI
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
+
+      resource '/cors',
+        :headers => :any,
+        :methods => [:post],
+        :credentials => true,
+        :max_age => 0
+
+      resource '*',
+        :headers => :any,
+        :methods => [:get, :post, :delete, :put, :patch, :head],
+        :max_age => 0,
+        :expose => ['access-token','token-type','expiry','client','uid', 'Content-Type']
       end
     end
   end

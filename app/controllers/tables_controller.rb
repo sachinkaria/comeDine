@@ -3,11 +3,12 @@ class TablesController < ApplicationController
 respond_to :json
 
   def index
-    render json: Table.all
+    @tables = Table.all
+    render json: @tables
   end
 
   def create
-    render json: Table.create(table_params)
+    render json: current_user.tables.create(table_params)
   end
 
   def show
@@ -15,7 +16,7 @@ respond_to :json
   end
 
   def update
-    render json: Table.find(params[:id]).update(delivery_params)
+    render json: Table.find(params[:id]).update(table_params)
   end
 
   private

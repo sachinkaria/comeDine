@@ -36,4 +36,8 @@ describe UsersController, 'testing users' do
     get "/users/#{@sachin.id}", {}, {}
     expect(json).to eq(auth_error)
   end
+
+  it 'user can register with a name', type: :request do
+    expect(@sachin.name).to eq("Sachin Karia")
+  end
 end

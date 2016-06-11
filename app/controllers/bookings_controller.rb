@@ -13,6 +13,10 @@ class BookingsController < ApplicationController
     render json: current_user.bookings.create(booking_params)
   end
 
+  def update
+    respond_with Meal.find(params[:id]).update(meal_params)
+  end
+
   private
 
   def booking_params

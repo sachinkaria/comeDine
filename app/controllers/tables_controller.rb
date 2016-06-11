@@ -16,7 +16,7 @@ respond_to :json
   end
 
   def update
-    render json: Table.find(params[:id]).update(delivery_params)
+    render json: Table.find(params[:id]).update(table_params)
   end
 
   private

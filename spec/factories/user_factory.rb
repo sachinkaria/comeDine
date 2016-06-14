@@ -17,5 +17,10 @@ FactoryGirl.define do
       end
     end
 
+    factory :user_with_review do
+      after(:create) do |user|
+        create(:table_with_review, user: user)
+    end
+end
   end
 end

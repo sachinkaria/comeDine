@@ -23,7 +23,7 @@ describe MealsController, "testing meals" do
     expect(Meal.last.menu).to eq(new_meal_params[:menu])
   end
 
-  it "only displays meals belonging to user", type: :request do
+  xit "only displays meals belonging to table", type: :request do
     post "/tables/#{@table.id}/meals.json", new_meal_params, @auth_headers
     expect(Meal.last.menu).to eq(new_meal_params[:menu])
   end

@@ -20,4 +20,5 @@ describe TablesController, "testing tables" do
     post "/tables.json", params, @auth_headers
     expect(Table.last.name).to eq(params[:name])
   end
+
 end

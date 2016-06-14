@@ -12,5 +12,12 @@ FactoryGirl.define do
         create(:meal, table: table)
       end
     end
+
+    factory :table_with_review do
+      after(:create) do |table|
+        create(:review, table: table)
+      end
+    end
+
   end
 end
